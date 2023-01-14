@@ -31,11 +31,13 @@ async function fetchAPI(){
         const box=document.querySelector("#box");
         let d=data.data;
         for(let i=0; i<d.length; i++){
+            const p=document.createElement('p');
             const img=document.createElement('img');
             const div=document.createElement('div');
             const hr=document.createElement('hr');
-            img.setAttribute('src', d[i])
-            div.append(img, hr)
+            p.textContent=`${d[i]["CONTENT"]}`
+            img.setAttribute('src', `https://d3i2vvc6rykmk0.cloudfront.net/${d[i]["ADDRESS"]}`)
+            div.append(p, img, hr)
             box.appendChild(div)
         }
     }
