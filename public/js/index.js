@@ -1,7 +1,6 @@
 const fileUploader = document.querySelector('#file-uploader');
 const upload=document.querySelector("#upload")
 const text=document.querySelector("#text")
-const urls="http://127.0.0.1:3000";
 fileUploader.addEventListener('change', ()=>{
     console.log(fileUploader.files[0])
 })
@@ -13,7 +12,7 @@ upload.addEventListener('click', async () => {
     formData.append('text', text.value);
     console.log(text.value);
     // send to server
-    const response = await fetch(`${urls}/images`, {
+    const response = await fetch(`/images`, {
         method: 'POST',
         body: formData
     })
@@ -24,7 +23,7 @@ upload.addEventListener('click', async () => {
 });
 
 async function fetchAPI(){
-    const response=await fetch(`${urls}/images`);
+    const response=await fetch(`/images`);
     const data=await response.json();
     if(data){
         console.log(data)
